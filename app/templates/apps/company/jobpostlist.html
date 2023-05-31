@@ -1,0 +1,48 @@
+{% extends "apps/company/base1.html" %} {% block content %}
+<center>
+  <div style="margin-top: 60px; padding:20px; ">
+    <h3>Posted Jobs</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Job Name</th>
+          <th scope="col">Company Name</th>
+          <th scope="col">Company Address</th>
+          <!-- <th scope="col">Job Description</th> -->
+          <th scope="col">Qualification</th>
+          <!-- <th scope="col">Responsibilties</th> -->
+          <th scope="col">Experience</th>
+          <th scope="col">Location</th>
+          <!-- <th scope="col">Salary Package</th> -->
+          <th scope="col">Company Contact</th>
+          <th scope="col">Company Email</th>
+          <th scope="col">Company Website</th>
+        </tr>
+      </thead>
+      {% if allJobs %}
+      <tbody>
+        {% for i in allJobs %}
+        <tr>
+          <th scope="row">{{i.id}}</th>
+          <td>{{i.jobName}}</td>
+          <td>{{i.companyName}}</td>
+          <td>{{i.companyAddress}}</td>
+          <!-- <td>{{i.jobDesc}}</td> -->
+          <td>{{i.qualification}}</td>
+          <!-- <td>{{i.responsibilties}}</td> -->
+          <td>{{i.experience}}</td>
+          <td>{{i.location}}</td>
+          <!-- <td>{{i.salaryPackage}}</td> -->
+          <td>{{i.companyContact}}</td>
+          <td>{{i.companyEmail}}</td>
+          <td>{{i.companyWebsite}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      {% endif %}
+    </table>
+  </div>
+</center>
+
+{%endblock %}

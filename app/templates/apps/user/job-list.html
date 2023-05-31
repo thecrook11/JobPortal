@@ -1,0 +1,46 @@
+{% extends "apps/user/base1.html" %} {% block content %} {% load static %}
+<div style="color: rgb(62, 62, 99); margin-top: 60px; padding: 20px">
+  <center>
+    <h3>Hello Jobs</h3>
+
+    {% if allJobs %} {% for i in allJobs %}
+    <div class="card mb-3" style="max-width: 540px">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img
+            src="{{MEDIA_URL}}{{i.logoPic.url}}"
+            class="img-fluid rounded-start"
+            alt="Logo"
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{i.jobName}}</h5>
+            <p class="card-text text-muted">Location : {{i.location}}</p>
+            <p class="card-text text-muted">
+              Qualification : {{i.qualification}}
+            </p>
+            <p class="card-text">
+              <small class="text-muted"
+                >Salary Package : {{i.salaryPackage}}</small
+              >
+            </p>
+            <form action="{% url 'applyjobpage' pk=i.id %}" method="POST">
+              {% csrf_token %}
+              <input
+                type="submit"
+                value="Apply"
+                class="btn"
+                style="background-color: rgb(62, 62, 99); color: white"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+
+    {% endfor %} {% endif %}
+  </center>
+</div>
+{% endblock %}

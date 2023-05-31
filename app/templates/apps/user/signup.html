@@ -1,0 +1,73 @@
+{% extends "apps/user/base1.html" %} {% block content %}
+<center>
+  <div
+    class="signupForm"
+    style="
+      margin-top: 60px;
+      border: 3px solid rgb(62, 62, 99);
+      padding: 20px;
+      width: 500px;
+    "
+  >
+    <form action="{% url 'register' %}" method="POST">
+      <legend>Signup</legend>
+      <center>
+        {% if msg %}
+        <h4 style="color: red">{{msg}}</h4>
+        {% endif %}
+      </center>
+      {% csrf_token %}
+      <table>
+        <tr>
+          <td>
+            <label class="form-label" for="role">Role</label>
+            <select class="form-select" name="role" id="">
+              <option>----Select Role----</option>
+              <option>Candidate</option>
+              <option>Company</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label class="form-label" for="fname">Firstname</label>
+            <input class="form-control" type="text" name="fname" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label class="form-label" for="lname">Lastname</label>
+            <input type="text" class="form-control" name="lname" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label class="form-label" for="email">Email</label>
+            <input type="email" name="email" class="form-control" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label class="form-label" for="password">Password</label>
+            <input type="password" name="password" class="form-control" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label class="form-label" for="cpassword">Confirm Password</label>
+            <input type="password" name="cpassword" class="form-control" />
+          </td>
+        </tr>
+      </table>
+      <br />
+      <input
+        type="submit"
+        value="Signup"
+        class="btn"
+        style="background-color: rgb(62, 62, 99); color: white"
+      />
+    </form>
+  </div>
+</center>
+
+{% endblock %}

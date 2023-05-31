@@ -1,0 +1,275 @@
+{% extends 'apps/user/base1.html'%} {% block content %} {% load static %}
+
+<div >
+  <div id="carouselExampleDark" class="carousel carousel-dark slide">
+    <div class="carousel-indicators">
+      <button
+        type="button"
+        data-bs-target="#carouselExampleDark"
+        data-bs-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleDark"
+        data-bs-slide-to="1"
+        aria-label="Slide 2"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleDark"
+        data-bs-slide-to="2"
+        aria-label="Slide 3"
+      ></button>
+    </div>
+    <div class="carousel-inner h-1">
+      <div class="carousel-item active" data-bs-interval="10000">
+        <img
+          src="{% static 'user/jobsearch.jpg' %}"
+          class="d-block w-100 "
+          alt="..."
+          height="500px"
+        />
+        <div class="carousel-caption d-none d-md-block">
+          <h5 style="color: rgb(255, 255, 255)">Easy way to find Jobs</h5>
+        
+          
+<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color:  rgb(62, 62, 99); color:white">
+  Register
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Register Here!</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'register' %}" method="POST">
+          
+          <center>
+            {% if msg %}
+            <h4 style="color: red;">{{msg}}</h4>
+            {% endif %}
+          </center>
+          {% csrf_token %}
+          <center>
+            <table>
+              <tr>
+                <td>
+                  <label class="form-label" for="role">Role</label>
+                  <select class="form-select" name="role" id="">
+                    <option>----Select Role----</option>
+                    <option>Candidate</option>
+                    <option>Company</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="form-label" for="fname">Firstname</label>
+                  <input class="form-control" type="text" name="fname" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="form-label" for="lname">Lastname</label>
+                  <input class="form-control" type="text" name="lname" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="form-label" for="email">Email</label>
+                  <input class="form-control" type="email" name="email" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="form-label" for="password">Password</label>
+                  <input class="form-control" type="password" name="password" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="form-label" for="cpassword">Confirm Password</label>
+                  <input class="form-control" type="password" name="cpassword" />
+                </td>
+              </tr>
+             
+               
+                  
+                
+              
+            </table>
+          </center>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn" style="background-color:  rgb(62, 62, 99); color:white">Register</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+        <!-- Button trigger modal -->
+<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"  style="background-color:  rgb(62, 62, 99); color:white">
+  Login
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Login Here!</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <center>
+          <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            
+            <center>
+              {% if msg %}
+              <h4 style="color: red">{{msg}}</h4>
+              {% endif %}
+            </center>
+            <table>
+                <tr>
+                    <td>
+                        <label class="form-label" for="role">Select Role</label>
+                        <select class="form-select" name="role" id="">
+                            <option>----Select Role----</option>
+                            <option>Candidate</option>
+                            <option>Company</option>
+                        </select>
+                    </td>
+                </tr>
+              <tr>
+                <td>
+                  <label class="form-label" for="email">Email</label>
+                  <input class="form-control" type="email" name="email" id="" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="form-label" for="password">Password</label>
+                  <input class="form-control" type="password" name="password" id="" />
+                </td>
+              </tr>
+              
+            </table>
+          
+        </center>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn"  style="background-color:  rgb(62, 62, 99); color:white">Login</button>
+      </div>
+    </div>
+  </form>
+  </div>
+</div>
+
+
+          <p style="color: rgb(255, 255, 255)">
+            You are just one step away from your dream job so don't be late for
+            getting what you want.
+          </p>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img
+          src="{% static 'user/wfo.jpg' %}"
+          class="d-block w-100"
+          alt="..."
+          height="500px"
+        />
+        <div class="carousel-caption d-none d-md-block">
+          <h5 style="color: rgb(255, 255, 255)">Office of your choice.</h5>
+          <p style="color: rgb(255, 255, 255)">
+            Get a chance to choose your dream company.
+          </p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img
+          src="{% static 'user/wfh.jpg' %}"
+          class="d-block w-100"
+          alt="..."
+          height="500px"
+        />
+        <div class="carousel-caption d-none d-md-block">
+          <h5 style="color: rgb(255, 255, 255)">Work from home</h5>
+          <p style="color: rgb(255, 255, 255)">
+            Work from your comfort-zone and earn .
+          </p>
+        </div>
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleDark"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleDark"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+<center>
+
+    <hr style="border: 2px solid; color:rgb(62, 62, 99);width: 1130px">
+</center>
+
+<div class="d-inline-block text-center" style="margin:20px; ">
+    <div style="float: right;">
+
+        <img src="{% static 'user/working.jpg'%}" alt="image" height="200px" width="400px">
+    </div>
+  <h3 style="color:  rgb(62, 62, 99);">Job-Portal</h3>
+  <p style="color:  rgb(62, 62, 99);">
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    Lorem Ipsum has been the industry's standard dummy text ever since the
+    1500s, when an unknown printer took a galley of type and scrambled it to
+    make a type specimen book. It has survived not only five centuries, but also
+    the leap into electronic typesetting, remaining essentially unchanged. It
+    was popularised in the 1960s with the release of Letraset sheets containing
+    Lorem Ipsum passages, and more recently with desktop publishing software
+    like Aldus PageMaker including versions of Lorem Ipsum.
+  </p>
+  <p style="color:  rgb(62, 62, 99);">
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    Lorem Ipsum has been the industry's standard dummy text ever since the
+    1500s, when an unknown printer took a galley of type and scrambled it to
+    make a type specimen book. It has survived not only five centuries, but also
+    the leap into electronic typesetting, remaining essentially unchanged. It
+    was popularised in the 1960s with the release of Letraset sheets containing
+    Lorem Ipsum passages, and more recently with desktop publishing software
+    like Aldus PageMaker including versions of Lorem Ipsum.
+  </p>
+ 
+</div>
+<center>
+
+    <hr style="border: 2px solid; color:rgb(62, 62, 99);width: 1130px">
+</center>
+
+ 
+
+{% endblock %}

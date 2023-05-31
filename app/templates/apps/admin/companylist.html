@@ -1,0 +1,46 @@
+{% extends "apps/admin/base1.html"%} {% block content%}
+<center>
+  <h3>company List</h3>
+  {% if user %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Email</th>
+        <th scope="col">Role</th>
+        <th scope="col">Created_at</th>
+        <th scope="col">Updated_at</th>
+        <th scope="col">Verified</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for j in user %}
+      <tr>
+        <th scope="row">{{j.id}}</th>
+        <td>{{j.email}}</td>
+        <td>{{j.role}}</td>
+        <td>{{j.isCreater}}</td>
+        <td>{{j.isUpdated}}</td>
+        <td>{{j.isVerified}}</td>
+        <td>
+          <form action="{% url 'verifypage' pk=j.id %}" method="post">
+            {% csrf_token %}
+            <input class="btn btn-primary" type="submit" value="Update" />
+          </form>
+        </td>
+        <td>
+            <form action="{% url 'compdelete' pk=j.id %}" method="post">
+              {% csrf_token %}
+              <input class="btn btn-danger" type="submit" value="Delete" />
+            </form>
+          </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+</center>
+
+{% endblock %}

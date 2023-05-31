@@ -1,0 +1,266 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <title>Job Portal : {{request.session.fname}} {{request.session.lname}}</title>
+    <style>
+      input{
+        border:2px solid;
+      }
+      label {
+        font-size: 20px;
+        color: rgb(62, 62, 99);
+      }
+      .abimg{
+        margin-top: 20px;
+        max-width: 50%;
+        height: auto;
+        float: right;
+        margin-right: 20px;
+      }
+      .abimg2{
+        margin-top: 20px;
+        margin-left: 40px;
+        max-width: 50%;
+        max-height: 500px;
+      
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <nav
+        class="navbar navbar-expand-lg fixed-top"
+        style="background-color: rgb(62, 62, 99); color: white"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'index' %}" style="color: white"
+            >Job-Portal</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="{% url 'index' %}"
+                  style="color: white"
+                  >Home</a
+                >
+              </li>
+              
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style="color: white"
+                >
+                  Pages
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="{% url 'signup' %}"
+                      >Signup</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'loginpage' %}"
+                      >Login</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'about' %}"
+                      >About-Us</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'contact' %}"
+                      >Contact-Us</a
+                    >
+                  </li>
+                  {% if request.session.email %}
+                  <li>
+                    <a class="dropdown-item" href="{% url 'joblistpage' %}"
+                      >Job-List</a
+                    >
+                  </li>
+                  {% endif %}
+                  <!-- <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Admin</a>
+                  </li> -->
+                </ul>
+              </li>
+              
+              {% if request.session.email %} {% else %}
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="{% url 'adminloginpage' %}"
+                  style="color: white"
+                  >ADMIN</a
+                >
+              </li>
+              {% endif %} {% if request.session.fname %}
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style="color: white"
+                >
+                  {{request.session.fname}} {{request.session.lname}}
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="{% url 'profile' pk=request.session.id %}"
+                      >Profile</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'logut' %}">Logut</a>
+                  </li>
+                </ul>
+                {% else %} {% comment %}
+              </li>
+
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style="color: white"
+                >
+                  Account
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="{% url 'profile' %}"
+                      >Profile</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'logut' %}">Logut</a>
+                  </li>
+                  {% endcomment %} {% endif%}
+                </ul>
+              </li>
+            </ul>
+
+            <table>
+              {% if request.session.fname %}
+              <tr>
+                <td>{{request.session.fname}} {{request.session.lname}}</td>
+                <td>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="30"
+                    height="40"
+                    fill="currentColor"
+                    class="bi bi-person-badge-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm4.5 0a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm5 2.755C12.146 12.825 10.623 12 8 12s-4.146.826-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"
+                    />
+                  </svg>
+                </td>
+              </tr>
+              {% else %}
+              <tr>
+                <td>Account</td>
+                <td>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="30"
+                    height="40"
+                    fill="currentColor"
+                    class="bi bi-person-badge-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm4.5 0a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm5 2.755C12.146 12.825 10.623 12 8 12s-4.146.826-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"
+                    />
+                  </svg>
+                </td>
+              </tr>
+              {% endif %}
+            </table>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    {% block content%} {% endblock %}
+    <div class="container">
+      <footer
+        class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+      >
+        <p class="col-md-4 mb-0 text-muted">&copy; 2022 Company, Inc</p>
+
+        <a
+          href="/"
+          class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
+        >
+          <svg class="bi me-2" width="40" height="32">
+            <use xlink:href="#bootstrap" />
+          </svg>
+        </a>
+
+        <ul class="nav col-md-4 justify-content-end">
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-muted">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-muted">Features</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-muted">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-muted">FAQs</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-muted">About</a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

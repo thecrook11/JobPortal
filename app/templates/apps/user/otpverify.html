@@ -1,0 +1,52 @@
+{% extends "apps/user/base1.html" %} {% block content %}
+
+<center>
+
+
+<div  style="border: 3px solid rgb(62,62,99); width:500px ;color: rgb(62,62,99); margin-top: 100px; padding:20px">
+    
+    <center>
+        <h3>OTP Verification Page</h3>
+        <center>
+          {% if msg %}
+          <h4 style="color: red">{{msg}}</h4>
+      
+          {% endif %}
+        </center>
+        <form action="{% url 'otp' %}" method="post">
+          {% csrf_token %}
+          <table>
+            <tr>
+              <td>
+                <label class="form-label" for="email">Email</label>
+                <input
+                  class="form-control"
+                  type="email"
+                  name="email"
+                  value="{{email}}"
+                  readonly
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="form-label" for="otp">OTP</label>
+                <input class="form-control" type="text" name="otp" />
+              </td>
+            </tr>
+          </table><br>
+          <input
+            type="submit"
+            value="Verify"
+            class="btn"
+            style="background-color: rgb(62, 62, 99); color: white"
+          />
+         
+        </form>
+      </center>
+      
+
+</div>
+</center>
+
+{% endblock %}

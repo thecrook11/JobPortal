@@ -1,0 +1,232 @@
+{% extends 'apps/user/base1.html' %} {% block content %}
+<div
+  style="
+    color: rgb(62, 62, 99);
+    margin-top: 60px;
+    padding: 20px;
+    text-align:center;
+  "
+>
+  <center>
+    <h1>Candidate Profile</h1>
+    <form
+      action="{% url 'updateprofile' pk=request.session.id %}"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      {% csrf_token %}
+      <table>
+        <tr>
+          <td><label class="form-label" for="fname">Firstname : </label></td>
+          <td>
+            <input
+              class="form-control"
+              type="text"
+              name="fname"
+              id=""
+              value="{{cand.fname}}"
+            />
+          </td>
+          <td><label class="form-label" for="lname">Lastname : </label></td>
+          <td>
+            <input
+              class="form-control"
+              type="text"
+              name="lname"
+              id=""
+              value="{{cand.lname}}"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><label class="form-label" for="email">Email : </label></td>
+          <td>
+            <input
+              class="form-control"
+              type="email"
+              name="email"
+              id=""
+              value="{{user.email}}"
+            />
+          </td>
+          <td><label class="form-label" for="contact">Contact : </label></td>
+          <td>
+            <input
+              class="form-control"
+              type="text"
+              name="contact"
+              value="{{cand.contact}}"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><label class="form-label" for="country">Country : </label></td>
+          <td>
+            <input
+              class="form-control"
+              type="text"
+              name="country"
+              id=""
+              value="{{cand.country}}"
+            />
+          </td>
+          <td>
+            <label class="form-label" for="highestEdu"
+              >Highest Education :
+            </label>
+          </td>
+          <td>
+            <input
+              class="form-control"
+              type="text"
+              name="highestEdu"
+              id=""
+              value="{{cand.highestEdu}}"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><label class="form-label" for="state">State : </label></td>
+          <td>
+            <input
+              class="form-control"
+              type="text"
+              name="state"
+              value="{{cand.state}}"
+            />
+          </td>
+          <td><label class="form-label" for="city">City : </label></td>
+          <td>
+            <input
+              class="form-control"
+              type="text"
+              name="city"
+              value="{{cand.city}}"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><label class="form-label" for="address">Address : </label></td>
+          <td>
+            <input
+              class="form-control"
+              type="textarea"
+              name="address"
+              value="{{cand.address}}"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><label class="form-label" for="dob">Date of birth : </label></td>
+          <td>
+            <input
+              class="form-control"
+              type="date"
+              name="dob"
+              id=""
+              value="{{cand.dob}}"
+            />
+          </td>
+          <td><label class="form-label" for="gender">Gender : </label></td>
+          <td>
+            <select class="form-control" name="gender" id="">
+              <option>----Select Gender----</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Others</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label class="form-label" for="jobType">Job Type : </label></td>
+          <td>
+            <input
+              class="form-control"
+              type="text"
+              name="jobType"
+              id=""
+              value="{{cand.jobType}}"
+            />
+          </td>
+          <td>
+            <label class="form-label" for="jobCategory">Job Category : </label>
+          </td>
+          <td>
+            <input
+              class="form-control"
+              type="text"
+              name="jobCategory"
+              id=""
+              value="{{cand.jobCategory}}"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label class="form-label" for="minSalary">Minimum Salary : </label>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="minSalary" value="{{cand.minSalary}}" />
+          </td>
+          <td>
+            <label class="form-label" for="maxSalary">Maximum Salary : </label>
+          </td>
+          <td>
+            <input
+            class="form-control"
+              type="text"
+              name="maxSalary"
+              id=""
+              value="{{cand.maxSalary}}"
+            />
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label class="form-label" for="jobDesc">Job Description : </label>
+          </td>
+          <td colspan="3">
+            <textarea class="form-control"
+            type="textarea"
+            name="jobDesc"
+            id=""
+            value="{{cand.jobDesc}}"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td><label class="form-label" for="shift">Shift</label></td>
+          <td><input class="form-control" type="text" name="shift" value="{{cand.shift}}" /></td>
+          <td>
+            <label class="form-label" for="experience">Experience : </label>
+          </td>
+          <td>
+            <input
+            class="form-control"
+              type="text"
+              name="experience"
+              id=""
+              value="{{cand.experience}}"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label class="form-label" for="profilePic">Profile Image : </label>
+          </td>
+          <td><input class="form-control" type="file" name="profilePic" /></td>
+          <td>
+            <label class="form-label" for="website">Portfolio Website</label>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="website" id="" value="{{cand.website}}" />
+          </td>
+        </tr>
+        <tr></tr>
+      </table> <br>
+
+      <input type="submit" value="Update" class="btn" style="background-color: rgb(62, 62, 99); color:white"/>
+    </form>
+  </center>
+</div>
+{% endblock %}

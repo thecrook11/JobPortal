@@ -1,0 +1,144 @@
+{% extends "apps/company/base1.html" %} {% block content %}
+<center>
+  <div style="margin-top: 60px">
+    <!-- <h1>POST Your JOB</h1> -->
+    {% if msg %}
+    <h4 style="color: rgb(119, 187, 119)">{{msg}}</h4>
+    {% endif %}
+    <form
+      action="{% url 'jobpost' %}"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      {% csrf_token %}
+      <legend>POST-JOB FORM</legend>
+      <table>
+        <tr>
+          <td><label class="form-label" for="jobName">Job Name : </label></td>
+          <td>
+            <input class="form-control" type="text" name="jobName" id="" />
+          </td>
+          <td>
+            <label class="form-label" for="companyName">Company Name : </label>
+          </td>
+          <td><input class="form-control" type="text" name="companyName" /></td>
+        </tr>
+        <tr>
+          <td>
+            <label class="form-label" for="companyAddress"
+              >Company Address :
+            </label>
+          </td>
+          <td colspan="3">
+            <textarea class="form-control" name="companyAddress" id="" cols="30" rows="2"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label class="form-label" for="jobDesc">Job Description : </label>
+          </td>
+          <td colspan="3">
+            <textarea class="form-control" name="jobDesc" id="" cols="30" rows="2"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label class="form-label" for="qualification"
+              >Qualification :
+            </label>
+          </td>
+          <td>
+            <input
+              class="form-control"
+              type="text"
+              name="qualification"
+              id=""
+            />
+          </td>
+          <tr>
+
+              <td>
+                  <label class="form-label" for="responsibilties"
+                  >Responsibilties :
+                </label>
+            </td>
+            <td colspan="3">
+                <textarea class="form-control" name="responsibilties" id="" cols="30" rows="2"></textarea>
+            </td>
+        </tr>
+        </tr>
+        <tr>
+          <td><label class="form-label" for="location">Location : </label></td>
+          <td>
+            <input class="form-control" type="text" name="location" id="" />
+          </td>
+          <td>
+            <label class="form-label" for="companyWebsite"
+              >Company Website :
+            </label>
+          </td>
+          <td>
+            <input
+              class="form-control"
+              type="text"
+              name="companyWebsite"
+              id=""
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label class="form-label" for="companyEmail"
+              >Company Email :
+            </label>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="companyEmail" id="" />
+          </td>
+          <td>
+            <label class="form-label" for="companyContact"
+              >Company Contact :
+            </label>
+          </td>
+          <td>
+            <input
+              class="form-control"
+              type="text"
+              name="companyContact"
+              id=""
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label class="form-label" for="salaryPackage"
+              >Salary Package :
+            </label>
+          </td>
+          <td>
+            <input
+              class="form-control"
+              type="text"
+              name="salaryPackage"
+              id=""
+            />
+          </td>
+          <td>
+            <label class="form-label" for="experience">Experience : </label>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="experience" id="" />
+          </td>
+        </tr>
+        <tr>
+          <td><label class="form-label" for="logoPic">Logo Image : </label></td>
+          <td><input class="form-control" type="file" name="logoPic" /></td>
+        </tr>
+      </table>
+      <br />
+
+      <input class="btn" style="background-color:rgb(62,62,99);color:white;" type="submit" value="POST" />
+    </form>
+  </div>
+</center>
+{% endblock %}

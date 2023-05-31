@@ -1,0 +1,47 @@
+{% extends "apps/company/base1.html" %}
+ {% block content %}
+
+<center>
+  <div style="margin-top: 60px;padding:20px;">
+
+    <form action="{% url 'updatecompanyprofile' pk=request.session.id %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+    <legend>Update Your Profile!</legend>
+    <table>
+      <tr>
+        <td><label class="form-label" for="fname">First name : </label></td>
+        <td><input class="form-control" type="text" name="fname" value="{{comp.fname}}" /></td>
+        <td><label class="form-label"  for="lname">Last name : </label></td>
+        <td><input class="form-control" type="text" name="lname" value="{{comp.lname}}" /></td>
+      </tr>
+      <tr>
+        <td><label class="form-label"  for="companyName">Company Name : </label></td>
+        <td><input class="form-control" type="text" name="companyName" value="{{comp.companyName}}" /></td>
+        <td><label class="form-label"  for="country">Country : </label></td>
+        <td><input class="form-control" type="text" name="country" value="{{comp.country}}" /></td>
+      </tr>
+      <tr>
+        <td><label class="form-label"  for="state">State : </label></td>
+        <td><input class="form-control" type="text" name="state" value="{{comp.state}}" /></td>
+        <td><label class="form-label"  for="city">City : </label></td>
+        <td><input class="form-control" type="text" name="city" value="{{comp.city}}" /></td>
+      </tr>
+      <tr>
+        <td><label class="form-label"  for="contact">Contact : </label></td>
+        <td><input class="form-control" type="tel" name="contact" id="" value="{{comp.contact}}" /></td>
+      </tr>
+      <tr>
+        <td><label class="form-label"  for="address">Address : </label></td>
+        <td><input class="form-control" type="textarea" name="address" value="{{comp.address}}" /></td>
+      </tr>
+      <tr>
+        <td><label class="form-label"  for="logoPic">Logo Image : </label></td>
+        <td><input class="form-control" type="file" name="logoPic" id=""></td>
+      </tr>
+    </table><br>
+    <input class="btn" type="submit" value="Update" style="background-color: rgb(62,62,99); color:white;" />
+  </form>
+</div>
+</center>
+
+{% endblock %}

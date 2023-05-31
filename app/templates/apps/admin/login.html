@@ -1,0 +1,44 @@
+{% extends "apps/admin/base1.html" %} {% block content %}
+<center>
+  <div style="margin-top: 60px; padding:20px; border:3px solid rgb(62,62,99);width:500px;color:rgb(62,62,99)">
+    <form action="{% url 'adminlogin' %}" method="post">
+      {% csrf_token %}
+      <legend>Login</legend>
+      <center>
+        {% if msg %}
+        <h4 style="color: red">{{msg}}</h4>
+        {% endif %}
+      </center>
+      <table>
+        {% comment %}
+        <tr>
+          <td>
+            <label for="role">Select Role</label>
+            <select name="role" id="">
+              <option>----Select Role----</option>
+              <option>Candidate</option>
+              <option>Company</option>
+            </select>
+          </td>
+        </tr>
+        {% endcomment %}
+        <tr>
+          <td>
+            <label class="form-label" for="username">Username : </label>
+            <input class="form-control" type="text" name="username" id="" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label class="form-label" for="password">Password : </label>
+            <input class="form-control" type="password" name="password" id="" />
+          </td>
+        </tr>
+        
+      </table><br>
+      <input class="btn" style="background-color: rgb(62, 62, 99); color:white;" type="submit" value="Login" />
+
+    </form>
+  </div>
+</center>
+{% endblock %}
